@@ -1,9 +1,9 @@
-# DeLu Kids Store - E-commerce de Moda Infantil
+# Aurora Kids Store - E-commerce de Moda Infantil
 
 ![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)
 ![Tech Stack](https://img.shields.io/badge/Stack-React%20%7C%20Supabase%20%7C%20n8n-blue)
 
-O **DeLu Kids** é uma plataforma de e-commerce moderna voltada para o nicho de moda infantil. Desenvolvido com foco em performance, escalabilidade e automação de processos.
+O **Aurora Kids** é uma plataforma de e-commerce moderna voltada para o nicho de moda infantil. Desenvolvido com foco em performance, escalabilidade e automação de processos.
 
 ## 🚀 Tecnologias Utilizadas
 

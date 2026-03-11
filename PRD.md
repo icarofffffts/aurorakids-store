@@ -1,5 +1,5 @@
 # Documentação de Requisitos do Produto (PRD)
-## DeLu Kids
+## Aurora Kids
 
 **Versão:** 1.0
 **Data:** 31/01/2026
@@ -8,7 +8,7 @@
 ---
 
 ## 1. Visão Geral do Produto
-O projeto **DeLu Kids** é uma plataforma de e-commerce moderna voltada para o nicho de moda infantil. O sistema é composto por uma loja virtual performática para os clientes finais e um painel administrativo robusto para gestão do negócio. A arquitetura utiliza tecnologias de ponta como React/Vite para o frontend, Supabase como Backend-as-a-Service (BaaS) e n8n para automação de processos de negócio.
+O projeto **Aurora Kids** é uma plataforma de e-commerce moderna voltada para o nicho de moda infantil. O sistema é composto por uma loja virtual performática para os clientes finais e um painel administrativo robusto para gestão do negócio. A arquitetura utiliza tecnologias de ponta como React/Vite para o frontend, Supabase como Backend-as-a-Service (BaaS) e n8n para automação de processos de negócio.
 
 ## 2. Objetivos
 *   **Vendas Online:** Oferecer uma experiência de compra fluida e segura para roupas infantis.
