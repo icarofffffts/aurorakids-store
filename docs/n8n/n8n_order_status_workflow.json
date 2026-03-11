@@ -1,0 +1,71 @@
+{
+  "name": "Site - Order Status Notification",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "order-status",
+        "options": {}
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        100,
+        300
+      ],
+      "id": "d1c0f701-1a2b-4c3d-9e8f-010203040506"
+    },
+    {
+      "parameters": {
+        "content": "Atualizacao de status!\nPedido: #{{ $json.body.orderShortId }}\nCliente: {{ $json.body.customerName }}\nTelefone: {{ $json.body.customerPhone }}\nStatus: {{ $json.body.status }}\nTotal: R$ {{ $json.body.total }}\n\nMensagem enviada ao cliente:\n{{ $json.body.message }}",
+        "options": {}
+      },
+      "name": "Notify (Telegram)",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        320,
+        300
+      ],
+      "id": "e2d1f812-2b3c-4d5e-8f90-112233445566"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        540,
+        300
+      ],
+      "id": "f3e2a923-3c4d-5e6f-8091-66778899aabb"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Notify (Telegram)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notify (Telegram)": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

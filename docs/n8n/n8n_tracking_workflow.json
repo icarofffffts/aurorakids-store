@@ -1,0 +1,71 @@
+{
+  "name": "Site - Tracking Code Notification",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "tracking-code",
+        "options": {}
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        100,
+        300
+      ],
+      "id": "a7c9d4e1-12ab-45cd-89ef-001122334455"
+    },
+    {
+      "parameters": {
+        "content": "Rastreio enviado!\nPedido: #{{ $json.body.orderShortId }}\nCliente: {{ $json.body.customerName }}\nTelefone: {{ $json.body.customerPhone }}\nTransportadora: {{ $json.body.carrierName || '-' }} {{ $json.body.carrierService ? '(' + $json.body.carrierService + ')' : '' }}\nCodigo: {{ $json.body.trackingCode }}\nLink: {{ $json.body.trackingUrl || '-' }}\nStatus: {{ $json.body.status }}\nTotal: R$ {{ $json.body.total }}\n\nMensagem enviada ao cliente:\n{{ $json.body.message }}",
+        "options": {}
+      },
+      "name": "Notify (Telegram)",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        320,
+        300
+      ],
+      "id": "b8d0e5f2-34bc-56de-90fa-66778899aabb"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        540,
+        300
+      ],
+      "id": "c9e1f603-56cd-67ef-a1b2-ccddeeff0011"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Notify (Telegram)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notify (Telegram)": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

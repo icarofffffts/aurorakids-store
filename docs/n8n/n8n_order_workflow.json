@@ -1,0 +1,47 @@
+{
+    "name": "Site - New Order Notification",
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "new-order",
+                "options": {}
+            },
+            "name": "Webhook",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                100,
+                300
+            ],
+            "id": "b2b2b2b2-1b2a-4b5c-9d8e-7f6a5b4c3d2h"
+        },
+        {
+            "parameters": {
+                "content": "Novo Pedido Recebido!\nPedido: #{{ $json.body.orderShortId }}\nCliente: {{ $json.body.customerName }}\nTelefone: {{ $json.body.customerPhone || '-' }}\nTotal: R$ {{ $json.body.total }}\nPagamento: {{ $json.body.status }}\n\nCupom: {{ $json.body.couponCode || '-' }}\nDesconto: R$ {{ $json.body.discount || 0 }}\n\nEndereco: {{ $json.body.address }}",
+                "options": {}
+            },
+            "name": "Send Slack/Telegram",
+            "type": "n8n-nodes-base.telegram",
+            "typeVersion": 1,
+            "position": [
+                300,
+                300
+            ],
+            "id": "c3c3c3c3-1b2a-4b5c-9d8e-7f6a5b4c3d2i"
+        }
+    ],
+    "connections": {
+        "Webhook": {
+            "main": [
+                [
+                    {
+                        "node": "Send Slack/Telegram",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}
